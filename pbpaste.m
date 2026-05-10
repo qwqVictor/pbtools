@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 
 int pbpaste(NSString *pasteboardType) {
     UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
@@ -24,7 +23,7 @@ int main(int argc, char **argv, char **envp) {
             }
         } else {
             // UIPasteboardTypeListString is nil for some reason; no time to debug right now
-            NSArray *stringTypes = @[(id)kUTTypeText, (id)kUTTypePlainText, (id)kUTTypeUTF8PlainText];
+            NSArray *stringTypes = @[@"public.text", @"public.plain-text", @"public.utf8-plain-text"];
 
             int result;
             for (NSString *type in stringTypes) {

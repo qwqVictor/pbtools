@@ -1,12 +1,11 @@
 #import <UIKit/UIKit.h>
-#import <MobileCoreServices/MobileCoreServices.h>
 
 int pbcopy(NSString *pasteboardType) {
     NSFileHandle *input = [NSFileHandle fileHandleWithStandardInput];
     NSData *inputData = [NSData dataWithData:[input readDataToEndOfFile]];
     
     if (!pasteboardType)
-        pasteboardType = (NSString *)kUTTypeText;
+        pasteboardType = @"public.text";
     
     [[UIPasteboard generalPasteboard] setData:inputData forPasteboardType:pasteboardType];
     return !inputData;
